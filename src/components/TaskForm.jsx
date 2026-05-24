@@ -1,14 +1,7 @@
-
-
-
-
-
-
-
 function TaskForm({ addTask }) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    const title = e.target.title.value;
+    const title = e.target.title.value.trim();
     if (title) {
       addTask({ title });
       e.target.reset();
@@ -16,9 +9,19 @@ function TaskForm({ addTask }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="title" placeholder="New task" />
-      <button type="submit">Add Task</button>
+    <form
+      onSubmit={handleSubmit}
+      style={{ display: "flex", gap: "8px", marginBottom: "1rem" }}
+    >
+      <input
+        className="ms-input"
+        name="title"
+        placeholder="Add a new task..."
+        style={{ flex: 1 }}
+      />
+      <button className="ms-btn-primary" type="submit">
+        + Add
+      </button>
     </form>
   );
 }

@@ -10,11 +10,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [checking, setChecking] = useState(true);
 
-  // Check if user is already logged in on page load
   useEffect(() => {
-    fetch(`${API_URL}/tasks`, {
-      credentials: "include",
-    })
+    fetch(`${API_URL}/tasks`, { credentials: "include" })
       .then((res) => {
         if (res.ok) {
           setIsLoggedIn(true);
@@ -26,9 +23,7 @@ function App() {
         }
       })
       .then((data) => {
-        if (data) {
-          setTasks(data);
-        }
+        if (data) setTasks(data);
         setChecking(false);
       })
       .catch((err) => {
@@ -40,19 +35,14 @@ function App() {
 
   const handleLogin = () => {
     setIsLoggedIn(true);
-    fetch(`${API_URL}/tasks`, {
-      credentials: "include",
-    })
+    fetch(`${API_URL}/tasks`, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => setTasks(data))
       .catch((err) => console.error(err));
   };
 
   const handleLogout = () => {
-    fetch(`${API_URL}/auth/logout`, {
-      method: "POST",
-      credentials: "include",
-    })
+    fetch(`${API_URL}/auth/logout`, { method: "POST", credentials: "include" })
       .then(() => {
         setIsLoggedIn(false);
         setTasks([]);
@@ -63,9 +53,7 @@ function App() {
   const addTask = (task) => {
     fetch(`${API_URL}/tasks`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       credentials: "include",
       body: JSON.stringify(task),
     })
@@ -79,9 +67,7 @@ function App() {
       method: "DELETE",
       credentials: "include",
     })
-      .then(() => {
-        setTasks(tasks.filter((task) => task._id !== id));
-      })
+      .then(() => setTasks(tasks.filter((task) => task._id !== id)))
       .catch((err) => console.error(err));
   };
 
@@ -90,26 +76,28 @@ function App() {
     if (newTitle) {
       fetch(`${API_URL}/tasks/${id}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({ title: newTitle }),
       })
         .then((res) => res.json())
-        .then((updatedTask) => {
+        .then((updatedTask) =>
           setTasks(
             tasks.map((task) =>
               task._id === updatedTask._id ? updatedTask : task,
             ),
-          );
-        })
+          ),
+        )
         .catch((err) => console.error(err));
     }
   };
 
   if (checking) {
-    return <p>Loading...</p>;
+    return (
+      <div className="loading-screen">
+        <span>Loading...</span>
+      </div>
+    );
   }
 
   if (!isLoggedIn) {
@@ -117,16 +105,19 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="fluent-card" style={{ maxWidth: 520 }}>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          marginBottom: "1.5rem",
         }}
       >
-        <h1>My To-Do App</h1>
-        <button onClick={handleLogout}>Logout</button>
+        <h1 style={{ fontSize: "20px" }}>My Tasks</h1>
+        <button className="ms-btn-secondary" onClick={handleLogout}>
+          Sign out
+        </button>
       </div>
       <TaskForm addTask={addTask} />
       <TaskList tasks={tasks} deleteTask={deleteTask} editTask={editTask} />

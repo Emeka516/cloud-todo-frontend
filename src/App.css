@@ -1,42 +1,131 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+.fluent-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 32px rgba(0, 78, 161, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
   padding: 2rem;
-  text-align: center;
+  width: 100%;
+  max-width: 480px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ── Typography ── */
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #201f1e;
+  margin-bottom: 0.25rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ── Inputs ── */
+.ms-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #8a8886;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.9);
+  color: #201f1e;
+  outline: none;
+  transition: border-color 0.15s, border-bottom-width 0.1s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.ms-input::placeholder { color: #8a8886; }
+
+.ms-input:focus {
+  border-color: #0078d4;
+  border-bottom-width: 2px;
 }
 
-.card {
-  padding: 2em;
+/* ── Buttons ── */
+.ms-btn-primary {
+  padding: 10px 20px;
+  background: #0078d4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
 }
 
-.read-the-docs {
-  color: #888;
+.ms-btn-primary:hover { background: #106ebe; }
+.ms-btn-primary:active { background: #005a9e; }
+
+.ms-btn-secondary {
+  padding: 8px 16px;
+  background: transparent;
+  color: #0078d4;
+  border: 1px solid rgba(0, 120, 212, 0.4);
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ms-btn-secondary:hover { background: rgba(0, 120, 212, 0.08); }
+
+.ms-btn-ghost {
+  padding: 6px 10px;
+  background: transparent;
+  color: #605e5c;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.ms-btn-ghost:hover { background: rgba(0, 0, 0, 0.06); color: #201f1e; }
+.ms-btn-ghost.danger:hover { background: rgba(209, 52, 56, 0.08); color: #d13438; }
+
+/* ── Task list ── */
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 1rem;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.55);
+  transition: background 0.15s;
+}
+
+.task-item:hover { background: rgba(0, 120, 212, 0.05); }
+
+.task-item span { flex: 1; font-size: 14px; color: #201f1e; }
+
+.task-actions { display: flex; gap: 4px; }
+
+/* ── Utility ── */
+.ms-error {
+  font-size: 13px;
+  color: #d13438;
+  margin-top: 8px;
+}
+
+.ms-muted { font-size: 13px; color: #605e5c; }
+.ms-link { color: #0078d4; background: none; border: none; font-size: 13px; cursor: pointer; text-decoration: underline; font-family: inherit; }
+
+.loading-screen {
+  font-size: 14px;
+  color: #605e5c;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

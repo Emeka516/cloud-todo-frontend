@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import Auth from "./components/Auth";
+import "./App.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 

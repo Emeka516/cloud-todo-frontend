@@ -32,7 +32,7 @@ function Auth({ onLogin }) {
       }
 
       onLogin();
-    } catch (err) {
+    } catch (_err) {
       setError("Something went wrong");
     } finally {
       setLoading(false);

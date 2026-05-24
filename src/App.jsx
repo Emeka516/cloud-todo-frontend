@@ -23,7 +23,7 @@ function App() {
         }
       })
       .then((data) => {
-        if (data) setTasks(data);
+        if (data) setTasks(Array.isArray(data) ? data : []);
         setChecking(false);
       })
       .catch((err) => {
@@ -37,7 +37,7 @@ function App() {
     setIsLoggedIn(true);
     fetch(`${API_URL}/tasks`, { credentials: "include" })
       .then((res) => res.json())
-      .then((data) => setTasks(data))
+      .then((data) => setTasks(Array.isArray(data) ? data : []))
       .catch((err) => console.error(err));
   };
 
@@ -58,7 +58,7 @@ function App() {
       body: JSON.stringify(task),
     })
       .then((res) => res.json())
-      .then((newTask) => setTasks([...tasks, newTask]))
+      .then((newTask) => setTasks((prev) => [...prev, newTask]))
       .catch((err) => console.error(err));
   };
 
@@ -67,7 +67,7 @@ function App() {
       method: "DELETE",
       credentials: "include",
     })
-      .then(() => setTasks(tasks.filter((task) => task._id !== id)))
+      .then(() => setTasks((prev) => prev.filter((task) => task._id !== id)))
       .catch((err) => console.error(err));
   };
 
@@ -82,8 +82,8 @@ function App() {
       })
         .then((res) => res.json())
         .then((updatedTask) =>
-          setTasks(
-            tasks.map((task) =>
+          setTasks((prev) =>
+            prev.map((task) =>
               task._id === updatedTask._id ? updatedTask : task,
             ),
           ),

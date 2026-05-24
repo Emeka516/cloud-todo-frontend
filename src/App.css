@@ -10,15 +10,13 @@
   max-width: 480px;
 }
 
-/* ── Typography ── */
 h1 {
   font-size: 24px;
   font-weight: 600;
-  color: #201f1e;
+  color: #201f1e !important;
   margin-bottom: 0.25rem;
 }
 
-/* ── Inputs ── */
 .ms-input {
   width: 100%;
   padding: 8px 12px;
@@ -27,7 +25,7 @@ h1 {
   font-size: 14px;
   font-family: inherit;
   background: rgba(255, 255, 255, 0.9);
-  color: #201f1e;
+  color: #201f1e !important;
   outline: none;
   transition: border-color 0.15s, border-bottom-width 0.1s;
 }
@@ -39,11 +37,10 @@ h1 {
   border-bottom-width: 2px;
 }
 
-/* ── Buttons ── */
 .ms-btn-primary {
   padding: 10px 20px;
   background: #0078d4;
-  color: #fff;
+  color: #fff !important;
   border: none;
   border-radius: 4px;
   font-size: 14px;
@@ -59,7 +56,7 @@ h1 {
 .ms-btn-secondary {
   padding: 8px 16px;
   background: transparent;
-  color: #0078d4;
+  color: #0078d4 !important;
   border: 1px solid rgba(0, 120, 212, 0.4);
   border-radius: 4px;
   font-size: 13px;
@@ -74,7 +71,7 @@ h1 {
 .ms-btn-ghost {
   padding: 6px 10px;
   background: transparent;
-  color: #605e5c;
+  color: #605e5c !important;
   border: none;
   border-radius: 4px;
   font-size: 13px;
@@ -83,10 +80,9 @@ h1 {
   transition: background 0.15s, color 0.15s;
 }
 
-.ms-btn-ghost:hover { background: rgba(0, 0, 0, 0.06); color: #201f1e; }
-.ms-btn-ghost.danger:hover { background: rgba(209, 52, 56, 0.08); color: #d13438; }
+.ms-btn-ghost:hover { background: rgba(0, 0, 0, 0.06); color: #201f1e !important; }
+.ms-btn-ghost.danger:hover { background: rgba(209, 52, 56, 0.08); color: #d13438 !important; }
 
-/* ── Task list ── */
 .task-list {
   list-style: none;
   display: flex;
@@ -108,19 +104,34 @@ h1 {
 
 .task-item:hover { background: rgba(0, 120, 212, 0.05); }
 
-.task-item span { flex: 1; font-size: 14px; color: #201f1e; }
+.task-item span {
+  flex: 1;
+  font-size: 14px;
+  color: #201f1e !important;
+}
 
 .task-actions { display: flex; gap: 4px; }
 
-/* ── Utility ── */
 .ms-error {
   font-size: 13px;
-  color: #d13438;
+  color: #d13438 !important;
   margin-top: 8px;
 }
 
-.ms-muted { font-size: 13px; color: #605e5c; }
-.ms-link { color: #0078d4; background: none; border: none; font-size: 13px; cursor: pointer; text-decoration: underline; font-family: inherit; }
+.ms-muted {
+  font-size: 13px;
+  color: #605e5c !important;
+}
+
+.ms-link {
+  color: #0078d4 !important;
+  background: none;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: inherit;
+}
 
 .loading-screen {
   font-size: 14px;
